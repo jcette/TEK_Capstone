@@ -1,0 +1,70 @@
+
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+
+<div class="container register-form">
+    <div class="form">
+        <div class="note">
+            <p>Client Control Panel</p>
+        </div>
+
+        <form class="form-content" th:action="@{/clientcontrol}" th:object="${controlForm}" method="post">
+            <div th:if="${message}"
+                 th:text="${message}"></div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>Disease Class</label>
+                    <select class="form-control" th:field="*{prediction}">
+                        <option value="">Choose...</option>
+                        <option value="Cancer">Cancer</option>
+                        <option value="Heart">Heart Disease</option>
+                        <option value="ALL">ALL</option>
+                    </select>
+                    <div class="col-md-6 form-group">
+                        <strong>Population</strong>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{population}" id="option1" value="Individual">
+                            <label class="form-check-label" for="option1">Individual</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{population}" id="option2" value="Group">
+                            <label class="form-check-label" for="option2">Group</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" th:field="*{population}" id="option3" value="Both">
+                            <label class="form-check-label" for="option2">Both</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btnSubmit">Submit</button>
+        </form>
+    </div>
+
+    <div th:if="${errormessage}" th:text="${errormessage}">
+    </div>
+    <div th:if="${groupPrediction!=null}" >
+        <div  th:replace="fragments/tables/group-prediction :: groupPredictionData(${groupPrediction})" />
+    </div>
+
+    <div th:if="${cancerData!=null}">
+        <div  th:replace="fragments/tables/cancer :: cancerDataTable(${cancerData})" />
+    </div>
+
+    <div th:if="${heartData!=null}">
+        <div  th:replace="fragments/tables/heart-data :: heartDataTable(${heartData})" />
+    </div>
+
+</div>
+<!-- /.container -->
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

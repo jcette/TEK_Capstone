@@ -1,0 +1,80 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+
+<div class="container">
+
+    <div class="form">
+        <div class="note">
+            <p>Admin Control Panel</p>
+        </div>
+        <div th:if="${#lists.isEmpty(clients)}" class="alert alert-danger">
+            <strong>No clients exist. Please register clients </strong>
+            <span><a th:href="@{/register}">Register</a></span>
+        </div>
+        <form class="form-content" th:action="@{/admin-control}" method="post" th:object="${adminForm}" enctype="multipart/form-data" th:if="${ not #lists.isEmpty(clients)}" >
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>Select Client </label>
+                    <select class="form-control" th:field="*{clientEmail}">
+                        <option th:each="client : ${clients}" th:value="${client.email}" th:text="${client.name}" ></option>
+                    </select>
+
+                </div>
+                <div class="form-group mt-3">
+                    <label for="file">Select a CSV file</label>
+                    <input type="file" name="file" class="form-control-file" id="file" accept=".csv">
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-6 form-group">
+                    <label>Show  Client Data :  </label>
+                    <input type="checkbox" th:field="*{showData}" th:checked="${showData}"/>
+                </div>
+
+            </div>
+
+<!--            <button type="submit"  th:value="true" th:field="*{showData}">Show Data</button>-->
+            <button type="submit" class="btnSubmit">Submit</button>
+        </form>
+    </div>
+    <div class="row" th:if="${clientData!=null}">
+        <div class="col-10 mx-auto" th:if="${status!=null}">
+            <h1>File Upload Status</h1>
+            <!--display error if any-->
+            <div class="alert alert-danger" role="alert" th:if="${!status}">
+                <strong>Error:</strong>
+                <span th:text="${message}"></span>
+            </div>
+
+            <div class="alert alert-success" role="alert" th:if="${status}">
+                <strong>Message:</strong>
+                <span th:text="${message}"></span>
+            </div>
+
+        </div>
+
+        <div th:if="${clientData.groupPredictions!=null}" >
+            <div  th:replace="fragments/tables/group-prediction :: groupPredictionData(${clientData.groupPredictions})" />
+        </div>
+
+        <div th:if="${clientData.cancerData!=null}">
+            <div  th:replace="fragments/tables/cancer :: cancerDataTable(${clientData.cancerData})" />
+        </div>
+
+        <div th:if="${clientData.heartData!=null}">
+            <div  th:replace="fragments/tables/heart-data :: heartDataTable(${clientData.heartData})" />
+        </div>
+    </div>
+</div>
+<!-- /.container -->
+<div th:replace="fragments/footer :: footer"/>
+
+</body>
+</html>

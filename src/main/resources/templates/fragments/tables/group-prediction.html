@@ -1,0 +1,32 @@
+<!DOCTYPE html >
+<html lang="en"    xmlns:th="http://www.thymeleaf.org">
+
+<body>
+<div th:fragment="groupPredictionData(groupPrediction)">
+    <H1>Group-level Predictions and Statistics</H1>
+    <table class="table table-striped table-primary">
+
+        <thead class="ttop">
+        <tr class="table-info">
+            <td><b>DISEASE</b> </td>
+            <td><b>AVERAGE RISK (%)</b> </td>
+            <td><b>% DECREASE</b> </td>
+            <td><b>% MAINTAIN</b> </td>
+            <td><b>% INCREASE</b> </td>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="groupObj, iStat: ${groupPrediction}" th:style="${iStat.odd}? 'font-weight: normal;'">
+
+            <td th:text="${groupObj.type}"></td>
+            <td th:text="${groupObj.averageRisk}"></td>
+            <td th:text="${groupObj.decrease}"></td>
+            <td th:text="${groupObj.maintain}"></td>
+            <td th:text="${groupObj.increase}"></td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

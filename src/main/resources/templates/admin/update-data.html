@@ -1,0 +1,177 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <div th:replace="fragments/header :: header-css"/>
+    <link rel="stylesheet"
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+</head>
+<body>
+<div th:replace="fragments/header :: header"/>
+<div class="container">
+    <div>
+        <h1>Update Form</h1>
+    </div>
+        <form class="form-content form-horizontal" th:action="@{/update}" th:object="${clientDataForm}" method="post">
+            <input type="text"  readonly th:field="*{dataId}" class="form-control"/>
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Name:</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{sensitiveData.name}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Email:</label>
+                <div class="col-sm-10">
+                    <input type="email" th:field="*{sensitiveData.email}" class="form-control" placeholder="Email *"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Phone Number:</label>
+                <div class="col-sm-10">
+                    <input type="text" th:field="*{sensitiveData.phoneNumber}" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Date of Birth:</label>
+                <div class="col-sm-10">
+                    <input type="date" th:field="*{sensitiveData.dateOfBirth}" class="form-control" placeholder="Date Of birth *"/>
+                </div>
+            </div>
+
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Age:</label>
+                <div class="col-sm-10">
+                    <input type="number" th:field="*{healthData.age}" class="form-control" placeholder="age"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Weight:</label>
+                <div class="col-sm-10">
+                    <input type="number" th:field="*{healthData.weight}" class="form-control" placeholder="weight"/>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Height:</label>
+                <div class="col-sm-10">
+                    <input type="number" th:field="*{healthData.height}" class="form-control" placeholder="height"/>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Exercise :</label>
+                <div class="col-sm-10">
+                    <select class="form-control" th:field="*{healthData.exercise}">
+                        <option th:each="ex :${T(org.johnchoi.insuranceoptimizer.models.Exercise).values()}" th:value="${ex}" th:text="${ex}" ></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Diet :</label>
+                <div class="col-sm-10">
+                    <select class="form-control" th:field="*{healthData.diet}">
+                        <option th:each="dt :${T(org.johnchoi.insuranceoptimizer.models.Diet).values()}" th:value="${dt}" th:text="${dt}" ></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Smoking :</label>
+                <div class="col-sm-10">
+                    <select class="form-control" th:field="*{healthData.smoking}">
+                        <option th:each="smoking :${T(org.johnchoi.insuranceoptimizer.models.Smoking).values()}" th:value="${smoking}" th:text="${smoking}" ></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">SubstanceUse :</label>
+                <div class="col-sm-10">
+                    <select class="form-control" th:field="*{healthData.smoking}">
+                        <option th:each="sb :${T(org.johnchoi.insuranceoptimizer.models.SubstanceUse).values()}" th:value="${sb}" th:text="${sb}" ></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <label  class="col-sm-2 col-form-label">Recommendation :</label>
+                <div class="col-sm-10">
+                    <select class="form-control" th:field="*{healthData.smoking}">
+                        <option th:each="reco :${T(org.johnchoi.insuranceoptimizer.models.Recommendation).values()}" th:value="${reco}" th:text="${reco}" ></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row" th:if="*{healthData instanceof T(org.johnchoi.insuranceoptimizer.models.HeartData)}">
+                <label  class="col-sm-2 col-form-label">Blood Pressure:</label>
+                <div class="col-sm-10">
+                    <input type="number" th:field="*{healthData.bloodPressure}" class="form-control" placeholder="bloodPressure"/>
+                </div>
+            </div>
+            <div class="form-group row" th:if="*{healthData instanceof T(org.johnchoi.insuranceoptimizer.models.HeartData)}">
+                <label  class="col-sm-2 col-form-label">Cholesterol:</label>
+                <div class="col-sm-10">
+                    <input type="number" th:field="*{healthData.cholesterol}" class="form-control" placeholder="Cholesterol *"/>
+                </div>
+            </div>
+
+            <div class="form-group row" th:if="*{healthData instanceof T(org.johnchoi.insuranceoptimizer.models.HeartData)}">
+                <label  class="col-sm-2 col-form-label">Prior Heart Disease:</label>
+
+                <div class="btn-group btn-group-toggle col-sm-6 col-form-label" data-toggle="buttons">
+                    <label class="btn btn-warning  col-sm-2">
+                        <input type="radio" name="options" id="priorHeartDiseaseOption1" value="Yes"  th:field="*{healthData.priorHeartDisease}"> Yes
+                    </label>
+                    <label class="btn btn-warning col-sm-2">
+                        <input type="radio" name="options" id="priorHeartDiseaseOption2" value="NO"  th:field="*{healthData.priorHeartDisease}"> No
+                    </label>
+                </div>
+            </div>
+            <div class="form-group row" th:if="*{healthData instanceof T(org.johnchoi.insuranceoptimizer.models.HeartData)}">
+                <label  class="col-sm-2 col-form-label">Family Heart Diseases History:</label>
+
+                <div class="btn-group btn-group-toggle col-sm-6 col-form-label" data-toggle="buttons">
+                    <label class="btn btn-warning  col-sm-2">
+                        <input type="radio" name="options" id="familyHeartDiseaseHistoryOption1" value="Yes"  th:field="*{healthData.familyHeartDiseaseHistory}"> Yes
+                    </label>
+                    <label class="btn btn-warning col-sm-2">
+                        <input type="radio" name="options" id="familyHeartDiseaseHistoryOption2" value="NO"  th:field="*{healthData.familyHeartDiseaseHistory}"> No
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row" th:if="*{healthData instanceof T(org.johnchoi.insuranceoptimizer.models.CancerData)}">
+                <label  class="col-sm-2 col-form-label">Prior Cancer Disease:</label>
+
+                <div class="btn-group btn-group-toggle col-sm-6 col-form-label" data-toggle="buttons">
+                    <label class="btn btn-warning  col-sm-2">
+                        <input type="radio" name="options" id="priorCancerOption1" value="Yes"  th:field="*{healthData.priorCancer}"> Yes
+                    </label>
+                    <label class="btn btn-warning col-sm-2">
+                        <input type="radio" name="options" id="priorCancerOption2" value="NO"  th:field="*{healthData.priorCancer}"> No
+                    </label>
+                </div>
+            </div>
+
+            <div class="form-group row" th:if="*{healthData instanceof T(org.johnchoi.insuranceoptimizer.models.CancerData)}">
+                <label  class="col-sm-2 col-form-label">Family Cancer History:</label>
+
+                <div class="btn-group btn-group-toggle col-sm-6 col-form-label" data-toggle="buttons">
+                    <label class="btn btn-warning  col-sm-2">
+                        <input type="radio" name="options" id="familyCancerHistoryOption1" value="Yes"  th:field="*{healthData.familyCancerHistory}"> Yes
+                    </label>
+                    <label class="btn btn-warning col-sm-2">
+                        <input type="radio" name="options" id="familyCancerHistoryOption2" value="NO"  th:field="*{healthData.familyCancerHistory}"> No
+                    </label>
+                </div>
+            </div>
+
+            <button type="submit" class="btnSubmit">Submit</button>
+        </form>
+
+</div>
+<!-- /.container -->
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

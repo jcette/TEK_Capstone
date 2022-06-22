@@ -1,0 +1,56 @@
+<!DOCTYPE html >
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">>
+
+<body>
+<div th:fragment="heartDataTable(heartData)">
+    <H1>Heart Data</H1>
+    <table class="table table-striped table-primary">
+        <thead class="top">
+        <tr class="table-info">
+            <td><b>AGE</b> </td>
+            <td><b>HEIGHT</b> </td>
+            <td><b>WEIGHT</b> </td>
+            <td><b>DIET</b> </td>
+            <td><b>EXERCISE</b> </td>
+            <td><b>SMOKING</b> </td>
+            <td><b>SUBSTANCE USE</b> </td>
+            <td><b>BLOOD PRESSURE</b> </td>
+            <td><b>CHOLESTEROL</b> </td>
+            <td><b>PRIOR HEART DISEASE</b> </td>
+            <td><b>FAMILY HEART DISEASE HISTORY</b> </td>
+            <td><b>HEART DISEASE PREDICTION</b> </td>
+            <td><b>RECOMMENDATION</b> </td>
+            <td  sec:authorize="hasAuthority('ADMIN')"><b>Actions</b></td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="heartObj, iStat: ${heartData}" th:style="${iStat.odd}? 'font-weight: normal;'">
+
+            <td th:text="${heartObj.age}"></td>
+            <td th:text="${heartObj.height}"></td>
+            <td th:text="${heartObj.weight}"></td>
+            <td th:text="${heartObj.diet}"></td>
+            <td th:text="${heartObj.exercise}"></td>
+            <td th:text="${heartObj.smoking}"></td>
+            <td th:text="${heartObj.substanceUse}"></td>
+            <td th:text="${heartObj.bloodPressure}"></td>
+            <td th:text="${heartObj.cholesterol}"></td>
+            <td th:text="${heartObj.priorHeartDisease}"></td>
+            <td th:text="${heartObj.familyHeartDiseaseHistory}"></td>
+            <td th:text="${heartObj.heartPrediction}"></td>
+            <td th:text="${heartObj.heartRecommendation}"></td>
+            <td sec:authorize="hasAuthority('ADMIN')" >
+                <form action="#" th:action="@{/update-form?dataId={dataId}(dataId = ${heartObj.id})}" th:method="post" >
+                <button class="btn btn-success btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Edit" ><i class="glyphicon glyphicon-edit"></i></button>
+                </form>
+                <form action="#"  th:action="@{/delete?dataId={dataId}(dataId = ${heartObj.id})}" th:method="delete" >
+                    <button class="btn btn-danger btn-sm rounded-0" type="submit" data-toggle="tooltip" data-placement="top" title="Delete"><i class="glyphicon glyphicon-trash"></i></button>
+                </form>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

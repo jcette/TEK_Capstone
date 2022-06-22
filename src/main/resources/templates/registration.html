@@ -1,0 +1,62 @@
+
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <script type="text/javascript" th:src="@{/js/main.js}"></script>
+    <div th:replace="fragments/header :: header-css"/>
+
+</head>
+<body>
+
+<div th:replace="fragments/header :: header"/>
+<div class="container register-form">
+    <div class="form">
+        <div class="note">
+            <p>Registration Form</p>
+        </div>
+        <div th:if="${message}" class="alert alert-danger" th:text="${message}"></div>
+        <!-- ToDo: Check whether passwords match. Add input field for email -->
+        <form class="form-content" th:action="@{/register}" th:object="${user}" method="post">
+
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" th:field="*{name}" class="form-control" placeholder="Your Name *"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" th:field="*{email}" class="form-control" placeholder="Email *"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" th:field="*{phoneNumber}" class="form-control" placeholder="Phone Number *"/>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input id="pwd" type="password" th:field="*{password}" class="form-control" placeholder="Your Password (must be longer than six characters)*" pattern="^.{6,}$" onblur="passwordCheck()"/>
+                    </div>
+                    <div class="form-group">
+                        <script type="text/javascript" th:src="@{/js/main.js}"></script>
+                        <input id="cpwd" type="password" th:field="*{confirmPassword}" class="form-control" placeholder="Confirm Password *" pattern="^.{6,}$" onblur="passwordCheck()"/>
+                        <p id="passwordError"></p>
+                    </div>
+                    <div class="form-group">
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="option1" name="ADMIN" class="custom-control-input" value="ADMIN" th:field="*{userRole}">
+                            <label class="custom-control-label" for="option1">ADMIN</label>
+                        </div>
+                        <div class="custom-control custom-radio custom-control-inline">
+                            <input type="radio" id="option2" name="CLIENT" class="custom-control-input" value="CLIENT" th:field="*{userRole}">
+                            <label class="custom-control-label" for="option2">CLIENT</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btnSubmit">Submit</button>
+        </form>
+    </div>
+</div>
+<!-- /.container -->
+<div th:replace="fragments/footer :: footer"/>
+</body>
+</html>

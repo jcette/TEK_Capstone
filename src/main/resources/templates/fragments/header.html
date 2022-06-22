@@ -1,0 +1,42 @@
+<html xmlns:th="http://www.thymeleaf.org"  xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <div th:fragment="header-css">
+        <!-- this is header-css -->
+        <link rel="stylesheet"
+              href="webjars/bootstrap/3.3.7/css/bootstrap.min.css" type="text/css" />
+        <link rel="stylesheet" th:href="@{/css/main.css}"/>
+        <base href="/">
+    </div>
+</head>
+<body>
+<div th:fragment="header">
+    <!-- this is header -->
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" th:href="@{/home}">Insurance Optimizer</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a th:href="@{/home}">Home</a></li>
+                    <li  sec:authorize="hasAuthority('ADMIN')" ><a th:href="@{/admin}">Admin Control</a></li>
+                    <li sec:authorize="hasAuthority('ADMIN')"><a th:href="@{/register}">Register Clients</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li sec:authorize="isAnonymous()" ><a th:href="@{/register}"><span class="glyphicon glyphicon-user"></span>Sign up</a></li>
+                    <li sec:authorize="isAnonymous()"><a th:href="@{/login}"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+                    <li sec:authorize="isAuthenticated()" class=" text-center">
+                        <p class="user">
+                            <span class="glyphicon glyphicon-user icon-size"></span>
+                           <span> Welcome, </span><span  sec:authentication="name"></span>
+                        </p>
+                    </li>
+                    <li sec:authorize="isAuthenticated()"> <a th:href="@{/logout}">Sign Out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</div>
+
+</body>
+</html>
