@@ -2,10 +2,12 @@ package org.johnchoi.insuranceoptimizer.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.johnchoi.insuranceoptimizer.models.*;
+import org.johnchoi.insuranceoptimizer.models.constant.Diet;
+import org.johnchoi.insuranceoptimizer.models.constant.Exercise;
+import org.johnchoi.insuranceoptimizer.models.constant.Smoking;
+import org.johnchoi.insuranceoptimizer.models.constant.SubstanceUse;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
 
 @Data
 @NoArgsConstructor

@@ -3,7 +3,7 @@ package org.johnchoi.insuranceoptimizer.services.implementation;
 import org.johnchoi.insuranceoptimizer.entities.UserEntity;
 import org.johnchoi.insuranceoptimizer.exceptions.UserNotFoundException;
 import org.johnchoi.insuranceoptimizer.models.User;
-import org.johnchoi.insuranceoptimizer.models.UserRoles;
+import org.johnchoi.insuranceoptimizer.models.constant.UserRoles;
 import org.johnchoi.insuranceoptimizer.repositories.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +11,6 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService {

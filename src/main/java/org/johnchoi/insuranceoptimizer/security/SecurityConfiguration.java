@@ -35,6 +35,7 @@ public class SecurityConfiguration {
         return new BCryptPasswordEncoder();
     }
 
+    // Authenticates the user: verifies there is such a user
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
         DaoAuthenticationProvider auth = new DaoAuthenticationProvider();
@@ -42,7 +43,7 @@ public class SecurityConfiguration {
         auth.setPasswordEncoder(passwordEncoder());
         return auth;
     }
-
+    // Uses provider to authenticate user
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration configuration) throws Exception {
         return configuration.getAuthenticationManager();
@@ -55,7 +56,7 @@ public class SecurityConfiguration {
                         authorizeRequests
                                 .antMatchers("/register", "/home", "/js/**", "/css/**", "/img/**", "static/**", "/webjars/**", "**/js/**", "**/css/**", "**/img/**", "**/static/**", "**/webjars/**").permitAll()
                                 .antMatchers("/admin/**", "/update/**","/delete").hasAuthority("ADMIN")
-                                .antMatchers("/client/**").hasAnyAuthority("ADMIN", "CLIENT")
+                                .antMatchers("/client/**").hasAuthority("CLIENT")
                                 .anyRequest().authenticated()
                 )
                 .formLogin(formLogin ->

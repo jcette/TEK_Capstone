@@ -3,6 +3,7 @@ package org.johnchoi.insuranceoptimizer.models;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.johnchoi.insuranceoptimizer.models.constant.Recommendation;
 
 import javax.validation.constraints.NotNull;
 

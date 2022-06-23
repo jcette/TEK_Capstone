@@ -1,16 +1,12 @@
 package org.johnchoi.insuranceoptimizer.repositories;
 
-import org.aspectj.lang.annotation.Before;
 import org.johnchoi.insuranceoptimizer.entities.UserEntity;
-import org.johnchoi.insuranceoptimizer.models.UserRoles;
-import org.junit.jupiter.api.BeforeAll;
+import org.johnchoi.insuranceoptimizer.models.constant.UserRoles;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-
-import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

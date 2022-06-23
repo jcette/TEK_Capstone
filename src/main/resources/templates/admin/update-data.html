@@ -62,7 +62,7 @@
                 <label  class="col-sm-2 col-form-label">Exercise :</label>
                 <div class="col-sm-10">
                     <select class="form-control" th:field="*{healthData.exercise}">
-                        <option th:each="ex :${T(org.johnchoi.insuranceoptimizer.models.Exercise).values()}" th:value="${ex}" th:text="${ex}" ></option>
+                        <option th:each="ex :${T(org.johnchoi.insuranceoptimizer.models.constant.Exercise).values()}" th:value="${ex}" th:text="${ex}" ></option>
                     </select>
                 </div>
             </div>
@@ -71,7 +71,7 @@
                 <label  class="col-sm-2 col-form-label">Diet :</label>
                 <div class="col-sm-10">
                     <select class="form-control" th:field="*{healthData.diet}">
-                        <option th:each="dt :${T(org.johnchoi.insuranceoptimizer.models.Diet).values()}" th:value="${dt}" th:text="${dt}" ></option>
+                        <option th:each="dt :${T(org.johnchoi.insuranceoptimizer.models.constant.Diet).values()}" th:value="${dt}" th:text="${dt}" ></option>
                     </select>
                 </div>
             </div>
@@ -80,7 +80,7 @@
                 <label  class="col-sm-2 col-form-label">Smoking :</label>
                 <div class="col-sm-10">
                     <select class="form-control" th:field="*{healthData.smoking}">
-                        <option th:each="smoking :${T(org.johnchoi.insuranceoptimizer.models.Smoking).values()}" th:value="${smoking}" th:text="${smoking}" ></option>
+                        <option th:each="smoking :${T(org.johnchoi.insuranceoptimizer.models.constant.Smoking).values()}" th:value="${smoking}" th:text="${smoking}" ></option>
                     </select>
                 </div>
             </div>
@@ -89,7 +89,7 @@
                 <label  class="col-sm-2 col-form-label">SubstanceUse :</label>
                 <div class="col-sm-10">
                     <select class="form-control" th:field="*{healthData.smoking}">
-                        <option th:each="sb :${T(org.johnchoi.insuranceoptimizer.models.SubstanceUse).values()}" th:value="${sb}" th:text="${sb}" ></option>
+                        <option th:each="sb :${T(org.johnchoi.insuranceoptimizer.models.constant.SubstanceUse).values()}" th:value="${sb}" th:text="${sb}" ></option>
                     </select>
                 </div>
             </div>
@@ -98,7 +98,7 @@
                 <label  class="col-sm-2 col-form-label">Recommendation :</label>
                 <div class="col-sm-10">
                     <select class="form-control" th:field="*{healthData.smoking}">
-                        <option th:each="reco :${T(org.johnchoi.insuranceoptimizer.models.Recommendation).values()}" th:value="${reco}" th:text="${reco}" ></option>
+                        <option th:each="reco :${T(org.johnchoi.insuranceoptimizer.models.constant.Recommendation).values()}" th:value="${reco}" th:text="${reco}" ></option>
                     </select>
                 </div>
             </div>

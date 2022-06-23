@@ -26,6 +26,12 @@ public class RegistrationController {
         this.registrationService = registrationService;
     }
 
+    /**
+     * Controller service to display registration page
+     * @param modelAndView : Registration page
+     * @param user : Model to store user data
+     * @return Return registration page
+     */
     @RequestMapping(value = "/register", method = RequestMethod.GET)
     public ModelAndView showRegistrationPage(ModelAndView modelAndView, User user) {
         modelAndView.setViewName("registration");
@@ -33,6 +39,14 @@ public class RegistrationController {
         return modelAndView;
     }
 
+
+    /**
+     * Controller service to register the user
+     * @param modelAndView : Registration page
+     * @param user : Model to store the user data
+     * @param bindingResult : Error handler
+     * @return Redirect to login page if registration successful, otherwise to display error message on registration page
+     */
     @RequestMapping(value = "/register", method = RequestMethod.POST)
     public ModelAndView processRegistration(ModelAndView modelAndView, @Validated User user, BindingResult bindingResult){
 

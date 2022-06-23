@@ -1,4 +1,4 @@
-package org.johnchoi.insuranceoptimizer.models;
+package org.johnchoi.insuranceoptimizer.models.constant;
 
 import java.util.Arrays;
 import java.util.Random;

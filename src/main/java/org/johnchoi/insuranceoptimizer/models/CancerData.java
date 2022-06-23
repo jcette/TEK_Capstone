@@ -1,6 +1,7 @@
 package org.johnchoi.insuranceoptimizer.models;
 
 import lombok.*;
+import org.johnchoi.insuranceoptimizer.models.constant.Recommendation;
 
 import javax.validation.constraints.NotNull;
 

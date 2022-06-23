@@ -2,7 +2,7 @@ package org.johnchoi.insuranceoptimizer.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.johnchoi.insuranceoptimizer.models.UserRoles;
+import org.johnchoi.insuranceoptimizer.models.constant.UserRoles;
 
 import javax.persistence.*;
 

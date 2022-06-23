@@ -2,6 +2,7 @@ package org.johnchoi.insuranceoptimizer.models;
 
 import lombok.Data;
 import lombok.ToString;
+import org.johnchoi.insuranceoptimizer.models.constant.UserRoles;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;

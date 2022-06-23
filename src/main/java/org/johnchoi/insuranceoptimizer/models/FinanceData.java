@@ -1,9 +1,10 @@
 package org.johnchoi.insuranceoptimizer.models;
 
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.johnchoi.insuranceoptimizer.models.constant.Premium;
+import org.johnchoi.insuranceoptimizer.models.constant.Tier;
 
 import javax.validation.constraints.NotNull;
 

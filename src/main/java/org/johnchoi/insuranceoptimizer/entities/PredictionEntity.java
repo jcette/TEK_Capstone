@@ -2,7 +2,7 @@ package org.johnchoi.insuranceoptimizer.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.johnchoi.insuranceoptimizer.models.Recommendation;
+import org.johnchoi.insuranceoptimizer.models.constant.Recommendation;
 
 import javax.persistence.*;
 

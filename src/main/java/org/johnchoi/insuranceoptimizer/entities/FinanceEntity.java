@@ -2,8 +2,8 @@ package org.johnchoi.insuranceoptimizer.entities;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.johnchoi.insuranceoptimizer.models.Premium;
-import org.johnchoi.insuranceoptimizer.models.Tier;
+import org.johnchoi.insuranceoptimizer.models.constant.Premium;
+import org.johnchoi.insuranceoptimizer.models.constant.Tier;
 
 import javax.persistence.*;
 

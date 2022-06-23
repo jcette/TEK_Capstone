@@ -16,7 +16,7 @@
             <p>Registration Form</p>
         </div>
         <div th:if="${message}" class="alert alert-danger" th:text="${message}"></div>
-        <!-- ToDo: Check whether passwords match. Add input field for email -->
+
         <form class="form-content" th:action="@{/register}" th:object="${user}" method="post">
 
             <div class="row">

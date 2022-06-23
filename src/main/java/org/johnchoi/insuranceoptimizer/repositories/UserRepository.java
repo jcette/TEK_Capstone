@@ -1,7 +1,7 @@
 package org.johnchoi.insuranceoptimizer.repositories;
 
 import org.johnchoi.insuranceoptimizer.entities.UserEntity;
-import org.johnchoi.insuranceoptimizer.models.UserRoles;
+import org.johnchoi.insuranceoptimizer.models.constant.UserRoles;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

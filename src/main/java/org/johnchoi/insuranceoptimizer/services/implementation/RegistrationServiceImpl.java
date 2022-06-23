@@ -24,20 +24,17 @@ public class RegistrationServiceImpl implements RegistrationService {
         this.passwordEncoder = passwordEncoder;
     }
 
+    /**
+     *  Takes input from registration page and saves into backend using userEntity object
+     * @param userRequest : input from front end
+     * @return : gives error if failed to register; otherwise gives success message
+     */
     @Override
     public String registerUser(User userRequest) {
         try {
 
-// check if user exist
-         /* UserEntity userExist =    this.userRepository.findByEmail(userRequest.getEmail());
-
-         if(userExist!=null){
-             //throw error, user already exists; do not need this because of unique constraint
-         }
-         */
 
             UserEntity userEntity = new UserEntity();
-            //To-do: check whether userRequest already exists in database
 
             BeanUtils.copyProperties(userRequest, userEntity); // instead of using many getters and setters; only works if userRequest and userEntity has exact same variable names
             userEntity.setPassword(passwordEncoder.encode(userRequest.getPassword()));
