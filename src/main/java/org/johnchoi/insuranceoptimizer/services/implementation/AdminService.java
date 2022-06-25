@@ -14,6 +14,10 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
+/** AdminService covers the business logic for both admins and clients because the client functions are simply a less powerful version of the admin functions.
+ *
+ */
+
 @Service
 public class AdminService {
 
@@ -27,6 +31,13 @@ public class AdminService {
         this.userRepository = userRepository;
     }
 
+    /** Transactional annotation makes this roll back changes if even one of the changes was incomplete. Data is either saved in all the tables or none.
+     * This method takes our csv data (all the patient rows) and spits out a ClientData object which is later parsed into data objects of meaningful categories
+     * @param csvData
+     * @param clientEmail
+     * @return
+     * @throws UserNotFoundException
+     */
     @Transactional
     public ClientData saveCsvData(List<HealthCSV> csvData, String clientEmail) throws UserNotFoundException {
 
@@ -38,7 +49,7 @@ public class AdminService {
         UserEntity userEntity = userRepository.findByEmail(clientEmail);
         List<SensitiveEntity> dataEntityList = new ArrayList<>();
         csvData.forEach(data->{
-            //save personal data or sensitive data
+            //save personal data or sensitive data. Don't need to save other data objects because sensitiveEntity is linked one-to-one to the other tables
           SensitiveEntity sensitiveEntity = saveSensitiveData(data);
           sensitiveEntity.setClient(userEntity);
             dataEntityList.add( sensitiveEntity );
@@ -50,6 +61,12 @@ public class AdminService {
         return clientData;
     }
 
+    /** Though this method is named "saveSensitiveData" it really is "saveAllData(except users)" because the sensitiveData is linked one-to-one with the other tables.
+     * This enables us to simultaneously create: healthEntity object, financeEntity object, and predictionEntity object in one go.
+     *
+     * @param data
+     * @return
+     */
     private SensitiveEntity saveSensitiveData(HealthCSV data) {
         SensitiveEntity sensitiveEntity =  new SensitiveEntity();
         sensitiveEntity.setName(data.getName());
@@ -83,7 +100,7 @@ public class AdminService {
 
     // For proof of concept, generating random float between 0.0 and 100.0; in future, value should be provided by regression algorithm or machine-learning algo
     private Float getPrediction() {
-        Float prediction = new Random().nextFloat(100);
+        Float prediction = Float.valueOf(new Random().nextInt(1000,10000) / 100);
         return prediction;
     }
 
@@ -162,10 +179,10 @@ public class AdminService {
         if(clientData.getCancerData()!=null && !clientData.getCancerData().isEmpty() ){
             //create Group Prediction for Cancer
             GroupPrediction  prediction = new GroupPrediction( );
-            prediction.setDecrease( new Random().nextDouble(10,40) );
-            prediction.setAverageRisk( new Random().nextDouble(20,70) );
-            prediction.setMaintain( new Random().nextDouble(30,60)  );
-            prediction.setIncrease( new Random().nextDouble(30,50)  );
+            prediction.setDecrease((double) (new Random().nextInt(1000,4000)/100));
+            prediction.setAverageRisk((double) (new Random().nextInt(2000,7000)/100));
+            prediction.setMaintain((double) (new Random().nextInt(3000,6000)/100));
+            prediction.setIncrease((double) (new Random().nextInt(3000,5000)/100));
             prediction.setType( "Cancer" );
             groupPredictions.add( prediction );
         }
@@ -173,10 +190,10 @@ public class AdminService {
         if(clientData.getHeartData()!=null && !clientData.getHeartData().isEmpty()){
             //create Group Prediction for Heart
             GroupPrediction  prediction = new GroupPrediction( );
-            prediction.setDecrease( new Random().nextDouble(10,40) );
-            prediction.setAverageRisk( new Random().nextDouble(20,70) );
-            prediction.setMaintain( new Random().nextDouble(30,60)  );
-            prediction.setIncrease( new Random().nextDouble(30,50)  );
+            prediction.setDecrease((double) (new Random().nextInt(1000,4000)/100));
+            prediction.setAverageRisk((double) (new Random().nextInt(2000,7000)/100));
+            prediction.setMaintain((double) (new Random().nextInt(3000,6000)/100));
+            prediction.setIncrease((double) (new Random().nextInt(3000,5000)/100));
             prediction.setType( "Heart" );
             groupPredictions.add( prediction );
         }

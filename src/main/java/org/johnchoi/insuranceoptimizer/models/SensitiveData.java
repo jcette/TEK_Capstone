@@ -8,6 +8,9 @@ import org.springframework.format.annotation.DateTimeFormat;
 import javax.persistence.Column;
 import java.util.Date;
 
+/** The data classes primarily carry info from the entity objects created by repository queries to the front end where we can populate the tables
+ *
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

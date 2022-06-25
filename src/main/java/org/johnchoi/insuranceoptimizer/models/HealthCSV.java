@@ -7,6 +7,8 @@ import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
 import java.util.Date;
 
+// This model class ferries data from the front-end supplied CSV file to the back end.
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
