@@ -22,6 +22,12 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
+    /**
+     * Method to retrieve a particular user's registration/login information from backend and store as user object in program
+     * @param email
+     * @return
+     * @throws UserNotFoundException
+     */
     public User findUserByEmail(String email) throws UserNotFoundException {
         UserEntity userEntity = this.userRepository.findByEmail(email);
         if(userEntity==null){
@@ -32,6 +38,10 @@ public class UserService {
         return user;
     }
 
+    /** Method to obtain a list of all users that are registered as clients, from the backend, to eventually populate front-end dropdown menu
+     *
+     * @return
+     */
     public List<User> getClients() {
         List<User> clientList = new ArrayList<>();
        List<UserEntity> userEntityList = userRepository.findAllByUserRole(UserRoles.CLIENT);

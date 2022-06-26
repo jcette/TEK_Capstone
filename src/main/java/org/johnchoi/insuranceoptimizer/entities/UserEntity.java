@@ -6,6 +6,9 @@ import org.johnchoi.insuranceoptimizer.models.constant.UserRoles;
 
 import javax.persistence.*;
 
+/**
+ * Represents user registration/login table in database
+ */
 @Data
 @NoArgsConstructor
 @Table(name="Users")

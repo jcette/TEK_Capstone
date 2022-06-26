@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * group prediction encapsulates the group-level predictions and recommendations, which are averages of the population's individual predictions and recommendations
+ */
 @Data
 @Builder
 @NoArgsConstructor

@@ -8,6 +8,9 @@ import org.johnchoi.insuranceoptimizer.models.constant.Tier;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * Finance data encapsulates just the finance portion of client data
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor

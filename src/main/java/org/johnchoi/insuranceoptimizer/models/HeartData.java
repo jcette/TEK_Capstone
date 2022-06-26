@@ -7,6 +7,9 @@ import org.johnchoi.insuranceoptimizer.models.constant.Recommendation;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * Covers the data relevant to heart disease predictions
+ */
 @Data
 //@Builder
 @NoArgsConstructor

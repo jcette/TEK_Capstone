@@ -8,6 +8,9 @@ import org.johnchoi.insuranceoptimizer.models.constant.*;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * This data class covers the health-related data that is common across the heart and cancer data models
+ */
 @Data
 @Builder
 @NoArgsConstructor

@@ -12,9 +12,14 @@ import org.springframework.stereotype.Service;
 @Service
 public class RegistrationServiceImpl implements RegistrationService {
 
-
+    /**
+     * Allows us to perform database operations
+     */
     private UserRepository userRepository;
 
+    /**
+     * Used to encode/scramble user password
+     */
     private PasswordEncoder passwordEncoder;
 
     @Autowired

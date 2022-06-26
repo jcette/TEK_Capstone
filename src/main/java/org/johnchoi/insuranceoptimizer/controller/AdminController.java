@@ -32,6 +32,9 @@ public class AdminController {
         this.adminService = adminService;
     }
 
+    /**    Creates a clients object to populate dropdown menu, and an adminForm object to take in the user input (client selection, show data checkbox, and csv file)
+     *
+     */
     @GetMapping("/admin")
     public ModelAndView admin(ModelAndView modelAndView, AdminForm adminForm) {
 
@@ -42,7 +45,9 @@ public class AdminController {
         modelAndView.setViewName("/admin/admin");
         return modelAndView;
     }
-
+    /** if admin elects to update someone, redirects to update-data html and injects dataId to show which row you are updating
+     *
+     */
     @PostMapping("/update-form")
     public String showUpdateForm(@RequestParam(value = "dataId", required = true) Long dataId, Model model){
         ClientDataForm clientDataForm = this.adminService.getClientDataById(dataId);
@@ -52,6 +57,12 @@ public class AdminController {
         return "admin/update-data";
     }
 
+    /** admin functionality to edit a particular row of backend
+     *
+     * @param form
+     * @param model
+     * @return
+     */
     @PostMapping("/update")
     public String updateData(ClientDataForm form,  Model model){
         try{
@@ -64,7 +75,12 @@ public class AdminController {
         return "success";
     }
 
-
+    /** admin functionality to delete a particular row of backend.
+     *
+     * @param dataId
+     * @param model
+     * @return
+     */
     @PostMapping("/delete")
     public String delete(@RequestParam(value = "dataId", required = true) Long dataId, Model model){
         this.adminService.deleteDataById(dataId);
@@ -72,6 +88,13 @@ public class AdminController {
         return "success";
     }
 
+    /** Saves the user input -- populates backend with csv file linked to the specific client. Also allows you to submit additional csv or make adminform selection changes without actually refreshing page
+     *
+     * @param file
+     * @param model
+     * @param adminForm
+     * @return
+     */
     @PostMapping("/admin-control")
                 public String uploadCSVFile(@RequestParam("file") MultipartFile file, Model model, AdminForm adminForm) {
         ClientData clientData;
@@ -85,12 +108,19 @@ public class AdminController {
                                            "Error in uploading the file" );
             model.addAttribute( "status",  clientData!=null ? true:false );
         }
+        // This is to be able to upload additional data or select a new client to upload data, on the same page.
         List<User> clients = userService.getClients();
         model.addAttribute("clients", clients);
         model.addAttribute( "clientData", clientData );
         return "/admin/admin";
     }
 
+    /** method to read the CSV and transfer to clientdata object to eventually populate backend database
+     *
+     * @param file
+     * @param clientEmail
+     * @return
+     */
     private ClientData uploadClientData(MultipartFile file, String clientEmail) {
         ClientData clientData = null;
         try {
@@ -103,6 +133,11 @@ public class AdminController {
         return clientData;
     }
 
+    /** method to retrieve client data from backend
+     *
+     * @param clientEmail
+     * @return
+     */
     private ClientData getClientData(String clientEmail) {
 
        ClientData clientData = this.adminService.getClientData(clientEmail);

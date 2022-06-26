@@ -14,6 +14,10 @@ import javax.servlet.http.HttpServletResponse;
 @Controller
 public class HomeController {
 
+    /**
+     * When you first go to the homepage, you see the index.html.
+     * @return
+     */
     @GetMapping("/home")
     public String home() {
         return "/index";
@@ -24,16 +28,30 @@ public class HomeController {
 //        return "/client/client";
 //    }
 
+    /**
+     * redirect to login page
+     * @return
+     */
     @GetMapping("/login")
     public String login() {
         return "/login";
     }
 
+    /**
+     * gives a 403 error if there is an error in the application (user not authenticated, unauthorized, etc)
+     * @return
+     */
     @GetMapping("/403")
     public String error403() {
         return "/error/403";
     }
 
+    /**
+     * If user elects to logout, clears user session
+     * @param request
+     * @param response
+     * @return
+     */
     @RequestMapping(value="/logout", method = RequestMethod.GET)
     public String logoutPage (HttpServletRequest request, HttpServletResponse response) {
         Authentication auth = SecurityContextHolder.getContext().getAuthentication();

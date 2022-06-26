@@ -9,10 +9,17 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-// A repository class: 1. opens a connection to database. 2. executes query. 3. maps the data to the entity object. 4. closes connection
+/** A repository class: 1. opens a connection to database. 2. executes query. 3. maps the data to the entity object. 4. closes connection
+ *
+ */
 @Repository
 public interface SensitiveRepository extends JpaRepository<SensitiveEntity, Long> {
 
+    /**
+     * retrieves a list of all entities tied to particular client
+     * @param client
+     * @return
+     */
     List<SensitiveEntity> findAllByClient(UserEntity client);
 
 }

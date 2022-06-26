@@ -9,6 +9,9 @@ import org.johnchoi.insuranceoptimizer.models.constant.SubstanceUse;
 
 import javax.persistence.*;
 
+/** Represents all health information in database. Includes cancer, heart, and shared health parameters
+ *
+ */
 @Data
 @NoArgsConstructor
 @Table(name="Health_Information")

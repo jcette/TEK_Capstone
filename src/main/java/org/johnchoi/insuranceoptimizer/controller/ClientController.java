@@ -17,6 +17,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/**
+ * This controller class takes the commands from the user on the client page.
+ */
 
 //To-do: filter client view so that they only see their own data
 
@@ -24,6 +27,13 @@ import java.util.stream.Collectors;
 public class ClientController {
     @Autowired
 private AdminService adminService;
+
+    /**
+     * This shows client page, creates the objects the client can select (the controlPanelForm) which lets the client choose what disease prediction they want and on what level of the population (group vs individual)
+     * @param modelAndView
+     * @param controlPanelForm
+     * @return
+     */
     @GetMapping("/client")
     public ModelAndView getClientPage(ModelAndView modelAndView, ControlPanelForm controlPanelForm) {
         modelAndView.setViewName("/client/client");
@@ -31,6 +41,12 @@ private AdminService adminService;
         return modelAndView;
     }
 
+    /**
+     * Populates user interface with tables that show the predictions and population the client chose in the original form
+     * @param modelAndView
+     * @param controlPanelForm
+     * @return
+     */
     @PostMapping("/clientcontrol")
     public ModelAndView processClientSelection(ModelAndView modelAndView, @Validated ControlPanelForm controlPanelForm) {
 

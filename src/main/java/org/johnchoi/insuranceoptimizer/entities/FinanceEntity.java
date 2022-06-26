@@ -7,6 +7,9 @@ import org.johnchoi.insuranceoptimizer.models.constant.Tier;
 
 import javax.persistence.*;
 
+/**
+ * Represents financial table in database
+ */
 @Data
 @NoArgsConstructor
 @Table(name="Financial_Information")

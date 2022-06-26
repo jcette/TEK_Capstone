@@ -5,6 +5,9 @@ import org.johnchoi.insuranceoptimizer.models.constant.Recommendation;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * Cancerdata encapsulates the portion of client data that would be specifically used to predict cancer outcomes
+ */
 @Data
 //@Builder
 @NoArgsConstructor

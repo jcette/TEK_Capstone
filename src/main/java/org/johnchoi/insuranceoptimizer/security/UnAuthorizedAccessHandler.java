@@ -13,6 +13,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * This class ensures pages are accessed by users with proper authorization and logs on console if someone tries to access a page they don't have access to
+ */
 @Component
 public class UnAuthorizedAccessHandler implements AccessDeniedHandler {
     private static Logger logger = LoggerFactory.getLogger(UnAuthorizedAccessHandler.class);

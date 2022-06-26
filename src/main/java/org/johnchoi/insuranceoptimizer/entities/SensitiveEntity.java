@@ -5,6 +5,9 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.util.Date;
 
+/**
+ * Represents HIPAA sensitive table in backend database. To-do: may have to make this less accessible
+ */
 @Data
 @NoArgsConstructor
 @Table(name="HIPAA_Sensitive_Information")

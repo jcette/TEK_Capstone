@@ -7,6 +7,11 @@ import org.springframework.web.servlet.ModelAndView;
 @Controller
 public class LoginController {
 
+    /**
+     * Displays login page to user
+     * @param modelAndView
+     * @return
+     */
     @RequestMapping(value="/login")
     public ModelAndView showLoginPage(ModelAndView modelAndView){
 

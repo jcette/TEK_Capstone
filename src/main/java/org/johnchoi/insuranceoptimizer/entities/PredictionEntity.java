@@ -6,6 +6,9 @@ import org.johnchoi.insuranceoptimizer.models.constant.Recommendation;
 
 import javax.persistence.*;
 
+/**
+ * Represents prediction table in database. Is not populated by the csv but is populated by an internal algo (currently using random number generators but eventually to use the health data and machine learning kit)
+ */
 @Data
 @NoArgsConstructor
 @Table(name="Health_Predictions_And_Recommendations")

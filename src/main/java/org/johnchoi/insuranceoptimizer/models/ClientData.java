@@ -7,6 +7,9 @@ import lombok.NoArgsConstructor;
 
 import java.util.List;
 
+/**
+ * Client data encapsulates all data for a particular client user, including health, cancer, heart, prediction, sensitive, finance, and group
+ */
 @Data
 @Builder
 @AllArgsConstructor

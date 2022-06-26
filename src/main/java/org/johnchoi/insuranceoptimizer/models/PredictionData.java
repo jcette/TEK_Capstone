@@ -7,6 +7,9 @@ import org.johnchoi.insuranceoptimizer.models.constant.Recommendation;
 
 import javax.validation.constraints.NotNull;
 
+/**
+ * Data class that encompasses the cancer, heart predictions and the cancer/heart/overall recommendations for each individual row in the database
+ */
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
